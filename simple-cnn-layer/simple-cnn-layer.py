@@ -77,6 +77,13 @@ def conv2d(x, W, b):
     out_w = Xw - Kw + 1
     Y = np.zeros((N, F, out_h, out_w))
 
+    """
+        Giả sử ta có 1 tấm ảnh 3 x 5x5 (3 chiều màu)
+        window sẽ cắt 1 khối kích thước 3 x 3x3 (tại sao 3x3 vì để nhân với kernel)
+        quy trình nhân như sau:
+        window (3x3x3) nhân convolutional với kernel (3x3x3) tạo ra 1 khối (3x3x3) sau đó lấy tổng hết lại = 1 con số ~~~
+        
+    """
     for h in range(out_h):
         for w in range(out_w):
             window = x[:,:, h:h+Kh, w:w+Kw]
